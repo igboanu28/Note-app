@@ -1,0 +1,46 @@
+<div class="container">
+    <h1 class="text-center">Register page</h1>
+        <hr>
+        <form [formGroup]="registerForm">
+        <div class="mb-3">
+          <label class="form-label">Email address</label>
+          <input formControlName='r_email' name="r_email" type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+          <small *ngIf="r_email.invalid && (r_email.dirty || r_email.touched)" class="text-danger"></small>
+          <div *ngIf="r_email.errors?.['required']" class="text-danger">Email is required</div>
+          <div *ngIf="r_email.errors?.['email']" class="text-danger">Email should be valid</div>
+    
+          <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
+        </div>
+        <div class="mb-3">
+          <label class="form-label">First_name</label>
+          <input formControlName='first_name' name="first_name" type="text" class="form-control" >
+          <small *ngIf="first_name.errors?.['required']" class="text-danger">First_name is required</small>
+        </div>
+
+        <div class="mb-3">
+            <label class="form-label">Password</label>
+            <input formControlName='r_password' name="r_password" type="password" class="form-control" id="exampleInputPassword1">
+            <small *ngIf="r_password.errors?.['required']" class="text-danger">Password is required</small>
+          </div>
+
+          <div class="mb-3">
+            <label class="form-label">Confirm Password</label>
+            <input formControlName='confirmPassword' name="confirmPassword" type="password" class="form-control" >
+            <small *ngIf="confirmPassword.errors?.['required']" class="text-danger">Password is required</small>
+          </div>
+
+
+          <div class="mb-3">
+            <label class="form-label">Last_name</label>
+            <input formControlName='last_name' name="last_name" type="text" class="form-control">
+            <small *ngIf="last_name.errors?.['required']" class="text-danger">Last_name is required</small>
+          </div>
+        
+        <button *ngIf="!loading" type="submit" class="btn btn-primary" [disabled]="registerForm.invalid">Login</button>
+      <hr>
+      <p class="text-center text-danger">Had an account? <a routerLink="/login">Login</a></p>
+      <hr>
+      </form>
+    </div>
+    
+    

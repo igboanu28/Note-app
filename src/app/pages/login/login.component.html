@@ -1,0 +1,26 @@
+<div class="container">
+<h1 class="text-center">Login page</h1>
+    <hr>
+    <form [formGroup]="loginForm">
+    <div class="mb-3">
+      <label class="form-label">Email address</label>
+      <input formControlName='email' name="email" type="email" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" required>
+      <span *ngIf="email.invalid && (email.dirty || email.touched)" class="text-danger"></span>
+      <div *ngIf="email.errors?.['required']" class="text-danger">Email is required</div>
+      <div *ngIf="email.errors?.['email']" class="text-danger">Email should be valid</div>
+
+      <div id="emailHelp" class="form-text">We'll never share your email with anyone else.</div>
+    </div>
+    <div class="mb-3">
+      <label class="form-label">Password</label>
+      <input formControlName='password' name="password" type="password" class="form-control" id="exampleInputPassword1">
+      <span *ngIf="password.errors?.['required']" class="text-danger">Password is required</span>
+    </div>
+    
+    <button *ngIf="!loading" type="submit" class="btn btn-primary" [disabled]="loginForm.invalid">Login</button>
+  <hr>
+  <p class="text-center text-danger">New User? <a routerLink="/register">Register</a></p>
+  <hr>
+  </form>
+</div>
+
